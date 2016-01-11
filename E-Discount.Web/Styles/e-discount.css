@@ -1,0 +1,232 @@
+﻿html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: 75% georgia, sans-serif;
+    line-height: 1.88889;
+    margin: 0;
+    padding: 0;
+    color: #7D775C;
+}
+
+section {
+    padding: 10px;
+    margin: 10px 0px;
+    box-shadow: 1px 1px 10px #988F5E;
+}
+
+p {
+    margin-top: 0;
+    text-align: justify;
+}
+
+h1, h3 {
+    font: bold 1.4em georgia, sans-serif;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+}
+
+h4 {
+    margin: 10px 0px;
+}
+
+fieldset {
+    margin: 10px;
+}
+
+legend {
+    font: italic bold 1.4em georgia, sans-serif;
+}
+
+textarea {
+    width: 100%;
+    height: auto;
+    min-height: 50px;
+    resize: none;
+}
+
+a:link {
+    font-weight: bold;
+    text-decoration: none;
+    color: #B7A5DF;
+}
+
+a:visited {
+    font-weight: bold;
+    text-decoration: none;
+    color: #B7A5DF;
+}
+
+a:hover, a:focus, a:active {
+    text-decoration: underline;
+    color: #9685BA;
+}
+
+table {
+    font-size: 12px;
+}
+.appFloat1 {
+    float: left;
+}
+
+.appFloat2 {
+    float: right;
+}
+
+.appAlign1 { 
+    text-align: left;
+}
+
+.appAlign2 {display:block;
+    text-align: right;
+}
+
+.combined1 {
+    float: left;
+    text-align: left;
+}
+
+.combined2 {
+    float: right;
+    text-align: right;
+}
+.spaceLeft {
+    margin-left:5px;
+}
+.spaceRight {
+    margin-right:5px;
+}
+
+#headBox {
+    z-index: 5;
+    width: 100%;
+    position:absolute;
+}
+
+#logo {
+    width: 70px;
+}
+
+#menu {
+    position: absolute;
+    list-style: none;
+    width:100%;
+    box-shadow: 1px 1px 10px #988F5E;
+    background-color: skyblue;
+}
+
+    #menu li {
+        padding: 5px  5px 2px 5px;
+        float: left;
+        background-color: transparent;
+        color: black;
+    }
+
+    #menu a {
+        color: #005ece;
+        text-decoration: none;
+    }
+
+#locationInput {
+    width: 400px;
+}
+
+#drop_category {
+    width: 200px;
+}
+#radius {
+    width: 160px;
+}
+.storeIcon {
+    width: 24px;
+    height: 24px;
+}
+#recommendation {
+    z-index: 5;
+    width: 220px;
+    height:730px;
+    background-color: skyblue;
+    position:absolute;
+    top:44px;
+    overflow-y:scroll;
+    padding:10px;
+}
+    #recommendationList li {
+    display:block;
+    margin:5px 0px;
+    border-color:black;
+    border-style:solid;
+    border-width:1px;
+    }
+#resultsTable {
+    border-collapse: collapse;
+    width: 240px;
+}
+#feedback {
+    z-index: 5;
+    width: 500px;
+    height:200px;
+    background-color: whitesmoke;
+    position:absolute;
+    bottom:10px;
+    right:10px;
+    padding:20px;
+}
+#rating {
+    font-size: 13px;
+    font-family: Arial Unicode MS;
+}
+
+.iw_table_row {
+    height: 18px;
+}
+
+.iw_attribute_name {
+    font-weight: bold;
+    text-align: right;
+}
+
+.iw_table_icon {
+    text-align: right;
+}
+
+#info-content {
+    display: none;
+}
+
+.error {
+    color: red;
+}
+
+.status {
+    font-size: 16px;
+    color: orange;
+    padding: 0px 10px;
+}
+
+.context {
+    padding: 20px;
+    text-align: left;
+    margin: auto;
+}
+
+.longText {
+    width: 350px;
+}
+
+#btnSubmit {
+    display: block;
+    margin: 10px;
+}
+
+.leftBlock {
+    display: block;
+    float: left;
+}
+
+.rightBlock {
+    display: block;
+    float: right;
+}

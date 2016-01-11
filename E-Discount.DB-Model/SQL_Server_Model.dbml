@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="EDiscount" Class="SQL_Server_ModelDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=&quot;C:\Users\vizio\Documents\Visual Studio 2013\WebSites\E-Discount.Web\App_Data\EDiscount.mdf&quot;;Integrated Security=True;Connect Timeout=30" SettingsObjectName="E_Discount.DB_Model.Properties.Settings" SettingsPropertyName="EDiscountConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ADDRESS" Member="ADDRESSes">
+    <Type Name="ADDRESS">
+      <Column Name="ADDRESS_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ADDRESS_LINE1" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ADDRESS_LINE2" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CITY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="STATE_PROVINCE_REGION" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="POSTAL_CODE" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="COUNTRY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="ADDRESS_STORE" Member="STOREs" ThisKey="ADDRESS_ID" OtherKey="ADDRESS_ID" Type="STORE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USER_CATEGORY" Member="USER_CATEGORies">
+    <Type Name="USER_CATEGORY">
+      <Column Name="USER_ID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="COUNT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CATEGORY_USER_CATEGORY" Member="CATEGORY" ThisKey="CATEGORY_ID" OtherKey="CATEGORY_ID" Type="CATEGORY" IsForeignKey="true" />
+      <Association Name="USER_USER_CATEGORY" Member="USER" ThisKey="USER_ID" OtherKey="USER_ID" Type="USER" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CATEGORY" Member="CATEGORies">
+    <Type Name="CATEGORY">
+      <Column Name="CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="LAYER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PARENT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CATEGORY_USER_CATEGORY" Member="USER_CATEGORies" ThisKey="CATEGORY_ID" OtherKey="CATEGORY_ID" Type="USER_CATEGORY" />
+      <Association Name="CATEGORY_STORE_CATEGORY" Member="STORE_CATEGORies" ThisKey="CATEGORY_ID" OtherKey="CATEGORY_ID" Type="STORE_CATEGORY" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LOCATION" Member="LOCATIONs">
+    <Type Name="LOCATION">
+      <Column Name="LOCATION_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LATITUDE" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="LONGITUDE" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Association Name="LOCATION_STORE" Member="STOREs" ThisKey="LOCATION_ID" OtherKey="LOCATION_ID" Type="STORE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.STORE_CATEGORY" Member="STORE_CATEGORies">
+    <Type Name="STORE_CATEGORY">
+      <Column Name="STORE_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="CATEGORY_STORE_CATEGORY" Member="CATEGORY" ThisKey="CATEGORY_ID" OtherKey="CATEGORY_ID" Type="CATEGORY" IsForeignKey="true" />
+      <Association Name="STORE_STORE_CATEGORY" Member="STORE" ThisKey="STORE_ID" OtherKey="STORE_ID" Type="STORE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PERIOD" Member="PERIODs">
+    <Type Name="PERIOD">
+      <Column Name="PERIOD_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OPEN_DAY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OPEN_TIME" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="CLOSE_TIME" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="STORE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CLOSE_DAY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="STORE_PERIOD" Member="STORE" ThisKey="STORE_ID" OtherKey="STORE_ID" Type="STORE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[USER]" Member="USERs">
+    <Type Name="USER">
+      <Column Name="USER_ID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FIRST_NAME" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="LAST_NAME" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="EMAIL" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PASSWORD" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ROLE" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="FACEBOOK_NAME" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="REGISTER_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="USER_USER_CATEGORY" Member="USER_CATEGORies" ThisKey="USER_ID" OtherKey="USER_ID" Type="USER_CATEGORY" />
+      <Association Name="USER_FEEDBACK" Member="FEEDBACKs" ThisKey="USER_ID" OtherKey="USER_ID" Type="FEEDBACK" />
+      <Association Name="USER_STORE" Member="STOREs" ThisKey="USER_ID" OtherKey="OWNER" Type="STORE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FEEDBACK" Member="FEEDBACKs">
+    <Type Name="FEEDBACK">
+      <Column Name="FEEDBACK_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RATING" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="COMMENT" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="STORE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="USER_ID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RATING_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IS_LIKED" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="USER_FEEDBACK" Member="USER" ThisKey="USER_ID" OtherKey="USER_ID" Type="USER" IsForeignKey="true" />
+      <Association Name="STORE_FEEDBACK" Member="STORE" ThisKey="STORE_ID" OtherKey="STORE_ID" Type="STORE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.STORE" Member="STOREs">
+    <Type Name="STORE">
+      <Column Name="STORE_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="PHONE" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="OWNER" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="POPULAR" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RATING" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="WEBSITE" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="PLACE_ID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PRICE_LEVEL" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GOOGLE_URL" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ADDRESS_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATION_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="STORE_STORE_CATEGORY" Member="STORE_CATEGORies" ThisKey="STORE_ID" OtherKey="STORE_ID" Type="STORE_CATEGORY" />
+      <Association Name="STORE_PERIOD" Member="PERIODs" ThisKey="STORE_ID" OtherKey="STORE_ID" Type="PERIOD" />
+      <Association Name="STORE_FEEDBACK" Member="FEEDBACKs" ThisKey="STORE_ID" OtherKey="STORE_ID" Type="FEEDBACK" />
+      <Association Name="STORE_DISCOUNT" Member="DISCOUNTs" ThisKey="STORE_ID" OtherKey="STORE_ID" Type="DISCOUNT" />
+      <Association Name="ADDRESS_STORE" Member="ADDRESS" ThisKey="ADDRESS_ID" OtherKey="ADDRESS_ID" Type="ADDRESS" IsForeignKey="true" />
+      <Association Name="LOCATION_STORE" Member="LOCATION" ThisKey="LOCATION_ID" OtherKey="LOCATION_ID" Type="LOCATION" IsForeignKey="true" />
+      <Association Name="USER_STORE" Member="USER" ThisKey="OWNER" OtherKey="USER_ID" Type="USER" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DISCOUNT" Member="DISCOUNTs">
+    <Type Name="DISCOUNT">
+      <Column Name="DISCCOUNT_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="STORE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="START_TIME" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="END_TIME" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="AVAILABLE_FROM" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="AVAILABLE_TO" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="AVAILABLE" Type="System.String" DbType="NChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="VALUE" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="TIMES" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="POPULAR" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="STORE_DISCOUNT" Member="STORE" ThisKey="STORE_ID" OtherKey="STORE_ID" Type="STORE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.GetCategories" Method="GetCategories">
+    <ElementType Name="CATEGORY_VIEWER">
+      <Column Name="CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="LAYER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PARENT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetNearbyStoresByCategory" Method="GetNearbyStoresByCategory">
+    <Parameter Name="latitude" Type="System.Double" DbType="Float" />
+    <Parameter Name="longitude" Type="System.Double" DbType="Float" />
+    <Parameter Name="radius" Type="System.Double" DbType="Float" />
+    <Parameter Name="catCode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="maxReturns" Type="System.Int32" DbType="Int" />
+    <ElementType Name="STORE_VIEWER">
+      <Column Name="STORE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ADDRESS_LINE" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CITY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="STATE_PROVINCE_REGION" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="POSTAL_CODE" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="COUNTRY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PHONE" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="WEBSITE" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="LATITUDE" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="LONGITUDE" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Distance" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PRICE_LEVEL" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RATING" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="PLACE_ID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetStoresByOwner" Method="GetStoresByOwner">
+    <Parameter Name="userID" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="STORE_INFO">
+      <Column Name="STORE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OWNER" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ADDRESS_LINE" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CITY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="STATE_PROVINCE_REGION" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="POSTAL_CODE" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="COUNTRY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PHONE" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="WEBSITE" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="LATITUDE" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="LONGITUDE" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PRICE_LEVEL" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RATING" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="PLACE_ID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetUser" Method="GetUser">
+    <Parameter Name="userID" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="USER_VIEWER">
+      <Column Name="USER_ID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FIRST_NAME" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="LAST_NAME" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="EMAIL" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PASSWORD" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ROLE" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="FACEBOOK_NAME" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="REGISTER_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

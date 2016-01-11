@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Modify Owner</title>
+    <link rel="stylesheet" href="Styles/e-discount.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&?key=AIzaSyCpp8DxXM7Ywodm5iuKvI2eLPVRmBOtbBI"></script>
+    <script type="text/javascript" src="Scripts/register.js"></script>
+</head>
+<body onload="initialize(); getOwner();">
+    <form name="modifyOwner">
+        <div class="context">
+            <h4>Your usiness Infomation</h4>
+            <input type="hidden" id="sid" />
+            <input type="text" name="autoAddress" id="autoAddress" placeholder="Enter your business location" onfocus="geolocate()" style="width:100%" />
+            <section>
+                <table>
+                    <tr>
+                        <td><h4>Business name :</h4></td>
+                        <td>
+                            <input type="text" name="bname" id="bname"><span class="error" id="error_bname"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><h4>Street address</h4></td>
+                        <td>
+                            <input id="street_number" disabled="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input id="route" disabled="true" name="route" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><h4>City</h4></td>
+                        <td>
+                            <input id="locality" disabled="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><h4>State</h4></td>
+                        <td>
+                            <input id="administrative_area_level_1" disabled="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><h4>Zip code</h4></td>
+                        <td>
+                            <input id="postal_code" disabled="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><h4>Country</h4></td>
+                        <td>
+                            <input id="country" disabled="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4>
+                                Price:
+                            </h4>
+                        </td>
+                        <td>
+                            <select name="price" id="price">
+                                <option value="0">Free</option>
+                                <option value="1">Inexpensive</option>
+                                <option value="2">Moderate</option>
+                                <option value="3">Expensive</option>
+                                <option value="4">Very Expensive</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+            <div id="map-canvas" style="width:570px; height:359px; position:absolute; top:100px; right:25px;"></div>
+            <h4>Your business contact information</h4>
+            <section>
+                <table width="100%">
+                    <tr>
+                        <td><h4>First name:</h4></td>
+                        <td>
+                            <input type="text" name="fname" id="fname"><span class="error" id="error_fname"></span>
+                        </td>
+                        <td>
+                            <h4>
+                                Last name:
+                            </h4>
+                        </td>
+                        <td>
+                            <input type="text" name="lname" id="lname"><span class="error" id="error_lname"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <h4>
+                                Login ID:
+                            </h4>
+                        </td>
+                        <td>
+                            <input type="text" name="loginID" id="loginID"><span class="error" id="error_loginID"></span>
+                        </td>
+                        <td>
+                            <h4>
+                                Password:
+                            </h4>
+                        </td>
+                        <td>
+                            <input type="password" name="password" id="password" pattern="^(?=.*\d).{4,8}$"><span class="error" id="error_password"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4>
+                                Phone:
+                            </h4>
+                        </td>
+                        <td colspan="3">
+                            <input type="text" name="phone" id="phone"><span class="error" id="error_phone"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4>
+                                E-mail:
+                            </h4>
+                        </td>
+                        <td colspan="3">
+                            <input type="email" name="email" id="email"><span class="error" id="error_email"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4>
+                                Website:
+                            </h4>
+                        </td>
+                        <td colspan="3">
+                            <input type="text" name="website" id="website" class="longText"><span class="error" id="error_website"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4>
+                                Description:
+                            </h4>
+                        </td>
+                        <td colspan="3">
+                            <textarea id="description" name="description"></textarea>
+                        </td>
+                    </tr>
+                </table>
+                <input id="btnSubmit" type="button" onclick="modifyOwnerSubmit();" value="Modify your count" />
+            </section>
+
+            <h4>Discount Information</h4>
+            <section>
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <h4>
+                                Discount:
+                            </h4>
+                        </td>
+                        <td >
+                            <input type="number" name="discount" id="discount"> % OFF
+                        </td>
+                        <td>
+                            <h4>
+                                Times:
+                            </h4>
+                        </td>
+                        <td>
+                            <input type="number" name="times" id="times">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4>
+                                Start Time:
+                            </h4>
+                        </td>
+                        <td>
+                            <input id="start_time" type="time" />
+                        </td>
+                        <td>
+                            <h4>
+                                End Time:
+                            </h4>
+                        </td>
+                        <td>
+                            <input id="end_time" type="time" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4>
+                                Available From:
+                            </h4>
+                        </td>
+                        <td>
+                            <input id="available_from" type="date" />
+                        </td>
+                        <td>
+                            <h4>
+                                Available To:
+                            </h4>
+                        </td>
+                        <td>
+                            <input id="available_to" type="date" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4>
+                                Description:
+                            </h4>
+                        </td>
+                        <td colspan="3">
+                            <textarea id="discountDescription"></textarea>
+                        </td>
+                    </tr>
+                </table>
+                <input id="btnSubmit" type="button" onclick='$.get(callbackUrl + "?query=discount&discount=" + $("#discount").val() + "&sid=" + $("#sid").val() + "&times=" + $("#times").val() + "&start_time=" + $("#start_time").val() + "&end_time=" + $("#end_time").val() + "&available_from=" + $("#available_from").val() + "&available_to=" + $("#available_to").val() + "&description=" + $("#discountDescription").val(), checkDiscountCallback);' value="Publish a discount" />
+                <span id="discountStatus" class="status"></span>
+            </section>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Publish Discount</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./Scripts/e-discount.js"></script>
+    <link rel="stylesheet" href="Styles/e-discount.css" type="text/css" media="screen" />
+</head>
+<body>
+    <form name="publishDiscount">
+        <div class="context">
+            <section>
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <h4>
+                                Discount:
+                            </h4>
+                        </td>
+                        <td colspan="3">
+                            <input type="number" name="discount" id="discount"> % OFF
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4>
+                                Start Time:
+                            </h4>
+                        </td>
+                        <td>
+                            <input id="start_time" type="time"/>
+                        </td>
+                        <td>
+                            <h4>
+                                End Time:
+                            </h4>
+                        </td>
+                        <td>
+                            <input id="end_time" type="time" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4>
+                                Available From:
+                            </h4>
+                        </td>
+                        <td>
+                            <input id="available_from" type="date" />
+                        </td>
+                        <td>
+                            <h4>
+                                Available To:
+                            </h4>
+                        </td>
+                        <td>
+                            <input id="available_to" type="date" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4>
+                                Description:
+                            </h4>
+                        </td>
+                        <td colspan="3">
+                            <textarea id="description"></textarea>
+                        </td>
+                    </tr>
+                </table>
+                <input id="btnSubmit" type="button" onclick='$.get(callbackUrl + "?query=discount&discount=" + $("#discount").val() + "&start_time=" + $("#start_time").val() + "&end_time=" + $("#end_time").val() + "&available_from=" + $("#available_from").val() + "&available_to=" + $("#available_to").val() + "&description=" + $("#description").val(), checkDiscountCallback);' value="Submit" />
+            </section>
+        </div>
+    </form>
+</body>
+</html>

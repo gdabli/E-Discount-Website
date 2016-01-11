@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Modify User</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="Scripts/register.js"></script>
+    <link rel="stylesheet" href="Styles/e-discount.css" type="text/css" media="screen" />
+</head>
+<body>
+    <form action="./E-Discount-Finder.ashx" onsubmit="return registerSubmit()">
+        <div class="context">
+            <h3>Create your personal account or <a href=" registerasowner.html"> start a business account</a> .</h3>
+            <input type="hidden" name="query" value="register" />
+            <section>
+                <table width="100%">
+                    <tr>
+                        <td><h4>First name:</h4></td>
+                        <td>
+                            <input type="text" name="fname" id="fname"><span class="error" id="error_fname"></span>
+                        </td>
+                        <td>
+                            <h4>
+                                Last name:
+                            </h4>
+                        </td>
+                        <td>
+                            <input type="text" name="lname" id="lname"><span class="error" id="error_lname"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4>
+                                Login ID:
+                            </h4>
+                        </td>
+                        <td colspan="3">
+                            <input type="text" name="loginID" id="loginID"><span class="error" id="error_loginID"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4>
+                                Password:
+                            </h4>
+                        </td>
+                        <td>
+                            <input type="password" name="password" id="password" pattern="^(?=.*\d).{4,8}$" /><span class="error" id="error_password"></span>
+                        </td>
+                        <td>
+                            <h4>
+                                Re-enter Password:
+                            </h4>
+                        </td>
+                        <td>
+                            <input type="password" name="re_password" id="re_password" pattern="^(?=.*\d).{4,8}$" /><span class="error" id="error_repassword"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <h4>
+                                E-mail:
+                            </h4>
+                        </td>
+                        <td colspan="3">
+                            <input type="email" name="email" id="email"><span class="error" id="error_email"></span>
+                        </td>
+                    </tr>
+                </table>
+                <input type="submit" id="btnSubmit">
+            </section>
+        </div>
+    </form>
+</body>
+</html>

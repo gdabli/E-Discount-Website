@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Log in</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./Scripts/register.js"></script>
+    <link rel="stylesheet" href="Styles/e-discount.css" type="text/css" media="screen" />
+</head>
+<body>
+    <form name="loginForm">
+        <div class="context">
+            <input type="hidden" name="query" value="login" />
+            <section>
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <h4>
+                                Login ID:
+                            </h4>
+                        </td>
+                        <td >
+                            <input type="text" name="loginID" id="loginID"><span class="error" id="error_loginID"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4>
+                                Password:
+                            </h4>
+                        </td>
+                        <td>
+                            <input type="password" name="password" id="password" pattern="^(?=.*\d).{4,8}$" /><span class="error" id="error_password"></span>
+                        </td>
+                    </tr>
+                </table>
+                <input id="btnSubmit" type="button" onclick="loginSubmit();" value="Submit" />
+            </section>
+        </div>
+    </form>
+
+</body>
+</html>

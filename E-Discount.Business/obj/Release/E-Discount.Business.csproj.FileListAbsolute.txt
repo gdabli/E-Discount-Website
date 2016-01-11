@@ -1,0 +1,9 @@
+C:\Users\vizio\Documents\Visual Studio 2013\Projects\E-Discount\E-Discount.Business\bin\Release\E-Discount.Business.dll
+C:\Users\vizio\Documents\Visual Studio 2013\Projects\E-Discount\E-Discount.Business\bin\Release\E-Discount.Business.pdb
+C:\Users\vizio\Documents\Visual Studio 2013\Projects\E-Discount\E-Discount.Business\bin\Release\E-Discount.DB-Model.dll
+C:\Users\vizio\Documents\Visual Studio 2013\Projects\E-Discount\E-Discount.Business\bin\Release\E-Discount.DB-Model.pdb
+C:\Users\vizio\Documents\Visual Studio 2013\Projects\E-Discount\E-Discount.Business\obj\Release\E-Discount.Business.csprojResolveAssemblyReference.cache
+C:\Users\vizio\Documents\Visual Studio 2013\Projects\E-Discount\E-Discount.Business\obj\Release\E-Discount.Business.dll
+C:\Users\vizio\Documents\Visual Studio 2013\Projects\E-Discount\E-Discount.Business\obj\Release\E-Discount.Business.pdb
+C:\Users\vizio\Documents\Visual Studio 2013\Projects\E-Discount\E-Discount.Business\obj\Release\E_Discount.Business.Strings.resources
+C:\Users\vizio\Documents\Visual Studio 2013\Projects\E-Discount\E-Discount.Business\obj\Release\E-Discount.Business.csproj.GenerateResource.Cache

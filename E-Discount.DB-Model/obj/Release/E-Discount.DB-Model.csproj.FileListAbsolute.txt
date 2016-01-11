@@ -1,0 +1,5 @@
+C:\Users\vizio\Documents\Visual Studio 2013\Projects\E-Discount\E-Discount.DB-Model\bin\Release\E-Discount.DB-Model.dll
+C:\Users\vizio\Documents\Visual Studio 2013\Projects\E-Discount\E-Discount.DB-Model\bin\Release\E-Discount.DB-Model.pdb
+C:\Users\vizio\Documents\Visual Studio 2013\Projects\E-Discount\E-Discount.DB-Model\obj\Release\E-Discount.DB-Model.csprojResolveAssemblyReference.cache
+C:\Users\vizio\Documents\Visual Studio 2013\Projects\E-Discount\E-Discount.DB-Model\obj\Release\E-Discount.DB-Model.dll
+C:\Users\vizio\Documents\Visual Studio 2013\Projects\E-Discount\E-Discount.DB-Model\obj\Release\E-Discount.DB-Model.pdb

@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        html, body, #map-canvas {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&?key=AIzaSyCpp8DxXM7Ywodm5iuKvI2eLPVRmBOtbBI"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="Scripts/thickbox.js"></script>
+    <script type="text/javascript" src="Scripts/google-map.js"></script>
+    <script type="text/javascript" src="Scripts/e-discount.js"></script>
+    <link rel="stylesheet" href="Styles/thickbox.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="Styles/e-discount.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+<body>
+    <!--<script type="text/javascript" src="Scripts/facebook.js"></script>-->
+    <div id="headBox">
+        <ul id="menu"> 
+            <li><img src="images/logo.gif" id="logo" /></li>
+            <li><input id="locationInput" placeholder="Enter a location" type="text" class="form-control appFloat1" /><select id="drop_category" class="form-control appFloat1"></select></li>
+            <li><input type="text" id="radius" placeholder="Enter radius (miles)." class="form-control appFloat1" /><input type="button" onclick="getdata($('#radius').val())" value="get data" class="btn-sm btn-info spaceLeft" /><input type="button" onclick="    getRecommendation('knn', $('#radius').val(), $('#drop_category option:selected').val())" value="knn" class="btn-sm btn-info spaceLeft" /><input type="button" onclick="getRecommendation('aprioir', $('#radius').val(), $('#drop_category option:selected').val())" value="aprioir" class="btn-sm btn-info spaceLeft" /><input type="button" onclick="getRecommendation('default', $('#radius').val(), $('#drop_category option:selected').val())" value="default" class="btn-sm btn-info spaceLeft" /></li>
+            <li style="right:0px; position:absolute;">Hi ! <span id="login"><a href="Login.html?keepThis=true&TB_iframe=false&height=220&width=400" title="Log in" class="thickbox btn-xs btn-link">Sign in</a> or <a href="Register.html?keepThis=true&TB_iframe=false&height=600&width=900" title="register" class="thickbox btn-xs btn-link">register</a></span>| <input id="btnLogoff" class="hidden btn-sm btn-info spaceLeft" type="button" onclick="$.get(callbackUrl + '?query=logoff', logoffCallback);" value="Log Off" class="btn-sm btn-info spaceLeft" /></li>
+        </ul>
+        <div style="float:right; margin-left:50px;" id="status">
+        </div>
+    </div>
+    <div id="map-canvas">
+    </div>
+    <div id="info-content">
+        <table>
+            <tr id="iw-url-row" class="iw_table_row">
+                <td id="iw-icon" class="iw_table_icon"></td>
+                <td id="iw-url"></td>
+            </tr>
+            <tr id="iw-address-row" class="iw_table_row">
+                <td class="iw_attribute_name">Address:</td>
+                <td id="iw-address"></td>
+            </tr>
+            <tr id="iw-phone-row" class="iw_table_row">
+                <td class="iw_attribute_name">Telephone:</td>
+                <td id="iw-phone"></td>
+            </tr>
+            <tr id="iw-rating-row" class="iw_table_row">
+                <td class="iw_attribute_name">Rating:</td>
+                <td id="iw-rating"></td>
+            </tr>
+            <tr id="iw-website-row" class="iw_table_row">
+                <td class="iw_attribute_name">Website:</td>
+                <td id="iw-website"></td>
+            </tr>
+            <tr class="iw_table_row">
+                <td class="iw_attribute_name">Feedback:</td>
+                <td><a href="javaScript:$('#feedback').removeClass('hidden')" title="Feed Back" class="btn-xs btn-link">>> Leave Feedback <<</a></td>
+            </tr>
+        </table>
+    </div>
+    <div id="recommendation" class="hidden">
+        <ul id="recommendationList">
+            <li>
+                <table>
+                    <tr class="iw_table_row">
+                        <td></td>
+                    </tr>
+                    <tr class="iw_table_row">
+                        <td></td>
+                    </tr>
+                    <tr class="iw_table_row">
+                        <td></td>
+                    </tr>
+                    <tr class="iw_table_row">
+                        <td></td>
+                    </tr>
+                    <tr class="iw_table_row">
+                        <td></td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+    </div>
+    <section id="feedback" class="hidden">
+        <table width="100%">
+            <tr>
+                <td>
+                    <h4>
+                        Do you like this deal?
+                        <input type="hidden" id="placeID" />
+                    </h4>
+                </td>
+                <td>
+                    <input type="radio" name="isliked" id="isliked1" value="1">Like</input>
+                    <input type="radio" name="isliked" id="isliked2" value="0">Dislike</input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4>
+                        How about this deal?
+                    </h4>
+                </td>
+                <td>
+                    <input type="radio" name="rating" id="rating1" value="1">&#10029;</input>
+                    <input type="radio" name="rating" id="rating2" value="2">&#10029;&#10029;</input>
+                    <input type="radio" name="rating" id="rating3" value="3">&#10029;&#10029;&#10029;</input>
+                    <input type="radio" name="rating" id="rating4" value="4">&#10029;&#10029;&#10029;&#10029;</input>
+                    <input type="radio" name="rating" id="rating5" value="5">&#10029;&#10029;&#10029;&#10029;&#10029;</input>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4>
+                        Enter your feedback here...
+                    </h4>
+                </td>
+                <td>
+                    <textarea id="comment"></textarea>
+                </td>
+            </tr>
+        </table>
+        <input type="button" class="btn btn-default" onclick='$.get(callbackUrl + "?query=feedback&pid=" + $("#placeID").val ()+ "&isliked=" + $("input[name=isliked]:checked").val() + "&rating=" + $("input[name=rating]:checked").val() + "&comment=" + $("#comment").val(), feedbackCallback);' value="Submit" /><input id="btnClose" class="btn btn-default" type="button" onclick="    $('#feedback').addClass('hidden')" value="Close" /><span id="feedbackStatus" class="status"></span>
+    </section>
+</body>
+</html>
